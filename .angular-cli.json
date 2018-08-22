@@ -56,7 +56,7 @@
     "component": {
     },
     "serve": {
-      "port": 4201
+      "port": 4200
     }
   }
 }
