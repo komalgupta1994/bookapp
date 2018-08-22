@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="javascript:void(0)">User Form</a>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/user']">Dashboard
+<span class="sr-only">(current)</span>
+</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/add-user']">Create User</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button (click)="logout()" class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
+    </form>
+  </div>
+</nav>

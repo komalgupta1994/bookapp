@@ -1,0 +1,31 @@
+<div class="col-md-6 col-md-offset-3">
+  <h2>Login</h2>
+  <form [formGroup]="loginFormGroup" novalidate>
+    <div class="form-group">
+      <label for="userName">Email*</label>
+      <input type="email" class="form-control" formControlName="email" />
+    </div>
+    <div *ngIf="loginFormGroup.controls['email'].invalid && (loginFormGroup?.controls['email']?.touched || formValidationFlag)" class="alert alert-danger">
+      <div *ngIf="loginFormGroup?.controls['email']?.hasError('required')">
+        Email is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="userName">Password*</label>
+      <input type="password" class="form-control" formControlName="password" />
+    </div>
+    <div *ngIf="loginFormGroup.controls['password'].invalid && (loginFormGroup?.controls['password']?.touched || formValidationFlag)" class="alert alert-danger">
+      <div *ngIf="loginFormGroup?.controls['password']?.hasError('required')">
+        Password is required.
+      </div>
+    </div>
+    <div class="alert alert-danger alert-dismissible" *ngIf='errorFlag'>
+      <a href="" (click)="errorFlag = false;" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Error!</strong> {{errorMessage}}
+    </div>
+    <div class="form-group">
+      <button (click)="loginForm()" class="btn btn-primary">Login</button>
+      <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+    </div>
+  </form>
+</div>

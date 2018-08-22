@@ -1,0 +1,56 @@
+<app-nav-bar></app-nav-bar>
+<div class="col-md-6 col-md-offset-3">
+  <!-- <h2>User Form</h2> -->
+  <form [formGroup]="userFormGroup" novalidate>
+    <div class="form-group">
+      <label for="userName">First Name*</label>
+      <input type="text" class="form-control" formControlName="firstName" />
+    </div>
+    <div *ngIf="userFormGroup.controls['firstName'].invalid && (userFormGroup?.controls['firstName']?.touched || formValidationFlag)" class="alert alert-danger">
+      <div *ngIf="userFormGroup?.controls['firstName']?.hasError('required')">
+        First Name is required.
+      </div>
+      <div *ngIf="userFormGroup?.controls['firstName']?.hasError('minlength')">
+        First Name min length is 5.
+      </div>
+      <div *ngIf="userFormGroup?.controls['firstName']?.hasError('maxlength')">
+        First Name max length is 25.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" formControlName="lastName" />
+    </div>
+    <div *ngIf="userFormGroup.controls['lastName'].invalid && (userFormGroup?.controls['lastName']?.touched)" class="alert alert-danger">
+    	<div *ngIf="userFormGroup?.controls['lastName']?.hasError('minlength')">
+        Last Name min length is 5.
+      </div>
+      <div *ngIf="userFormGroup?.controls['lastName']?.hasError('maxlength')">
+        Last Name max length is 25.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email*</label>
+      <input type="email" class="form-control" formControlName="email" />
+    </div>
+    <div *ngIf="userFormGroup.controls['email'].invalid && (userFormGroup?.controls['email']?.touched || formValidationFlag)" class="alert alert-danger">
+      <div *ngIf="userFormGroup?.controls['email']?.hasError('required')">
+        Email is required.
+      </div>
+      <div *ngIf="userFormGroup?.value?.email && userFormGroup?.controls['email']?.hasError('pattern')">
+        Please enter valid email id.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="number" class="form-control" formControlName="age" />
+    </div>
+    <div class="alert alert-danger" *ngIf='errorFlag'>
+      {{errorMessage}}
+    </div>
+    <div class="form-group">
+      <button (click)="saveUserForm()" class="btn btn-primary">{{showDetailsFlag ? 'Update' : 'Submit'}}</button>
+      <button class="btn btn-secondary" (click)="cancelUser()">Cancel</button>
+    </div>
+  </form>
+</div>

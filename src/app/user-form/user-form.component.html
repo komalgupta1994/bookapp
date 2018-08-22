@@ -1,0 +1,51 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="reglist">
+    <div class="text-left" *ngIf="!users?.length">
+      <button type="submit" class="btn btn-primary" (click)="showCreateForm = true">Create User+</button>
+    </div>
+    <table class="table table-striped" *ngIf="users?.length">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users;let i=index" (mouseover)="user[showButton] = true;" (mouseleave)="user[showButton] = false;">
+          <th scope="row">{{i+1}}</th>
+          <td>{{user?.firstName}}</td>
+          <td>{{user?.lastName}}</td>
+          <td>{{user?.email}}</td>
+          <td>{{user?.age}}</td>
+          <td *ngIf="user[showButton]">
+            <button type="button" class="btn btn-info" (click)="showDetails(user)">Edit</button>
+          </td>
+          <td *ngIf="user[showButton]">
+            <button type="button" class="btn btn-danger" (click)="openDeletePopup(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+</div>
+<app-create-user *ngIf="showCreateForm" (sendData)="callGetData($event)" [editData]="editData"></app-create-user>
+<div id="confirm-container" class="simplemodal-container" *ngIf="openPopupFlag">
+  <a href="javascript:void(0);" style="cursor: pointer;" title="Close" class="modal-close simplemodal-close" (click)="openPopupFlag = false">X</a>
+  <div tabindex="-1" class="simplemodal-wrap">
+    <div id="confirm" class="simplemodal-data">
+      <h3 class="message"></h3>
+      <p>Are you sure you want to Delete book?</p>
+      <div class="buttons">
+        <div class="no simplemodal-close" (click)="openPopupFlag = false">No</div>
+        <div class="yes" (click)="onDelete()">Yes</div>
+      </div>
+    </div>
+  </div>
+</div>
