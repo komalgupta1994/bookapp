@@ -15,4 +15,4 @@
 1. go to folder userApp.
 2. In the folder run 'npm install' command for install node modules.
 3. after installing run 'ng serve' command.
-4. on the browser enter 'http://localhost:4200' for see the application.
+4. on the browser enter 'http://localhost:4200' for see the application....
