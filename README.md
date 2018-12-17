@@ -10,6 +10,7 @@
 8. After delete it will delete from user table.
 9. There is also a authguard, if user want to use pages without login, then it restricted to user to access dashboard page.
 10. At last there is a logout button.
+11. dummy
 
 # How to run code
 1. go to folder userApp.
